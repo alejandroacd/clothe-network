@@ -1,0 +1,121 @@
+.login_card {
+    align-items: center;
+    height: 50vh;
+    color: black;
+
+    .modal_bg {
+        transform: scale(1);
+
+  transition:
+    transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+        position: fixed;
+        width: 100%;
+        height: 120vh;
+        padding-top: 100px;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+
+        .modal-box {
+            transition: 1s all;
+            width: 100%;
+            height: 70%;
+            border-radius: 10px;
+            background-color: #DDDDDD;
+            z-index: 3 !important;
+            padding:1em;
+            @media (min-width:1024px) {
+                width: 30%;
+                height: 45%;
+            }
+
+            span {
+                color: black;
+                font-size: 1.5em;
+                font-weight: bold;
+                margin: 1em;
+                float: right;
+                cursor: pointer;
+            }
+
+            h1 {
+                margin: 1em;
+            }
+
+            p {
+                font-size:1.2em;
+            }
+            button {
+                margin-left: 25%;
+            }
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 5em;
+        background-color: #F6F1F1;
+        border: 0.5px solid #DDDDDD;
+        width: 100%;
+        padding: 1.2em;
+        border-radius: 15px;
+        box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+    }
+
+    @media (min-width:1024px) {
+        height: 70vh;
+
+        form {
+            height: 60vh;
+            width: 35%;
+            align-content: center;
+            justify-content: center;
+        }
+    }
+
+
+
+    h1 {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 1em;
+        ;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input {
+        margin: 1em;
+        padding: 0.4em;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        font-weight: bold;
+        background-color: transparent
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    button {
+        width: 80%;
+        margin: 0 auto;
+        font-weight: bold;
+        letter-spacing: 3px;
+
+    }
+
+
+}

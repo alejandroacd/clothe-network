@@ -2,6 +2,9 @@ import '../Login/Login.scss'
 import { useRef } from 'react'
 import { useEffect, useState } from 'react';
 import getUsers from '../../utils/getUsers'
+import { setUser } from '../../reducers/user/userSlice'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
@@ -10,6 +13,9 @@ const Login = () => {
     const passwordRef = useRef();
     const [error,setError] = useState()
     const [users, setUsers] = useState([])
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
 
     const showModal = (e) => {
         e.preventDefault()
@@ -22,6 +28,7 @@ const Login = () => {
         modalRef.current.style.opacity = "0"
         modalRef.current.style.pointerEvents = 'none'
     }
+
     const validate = (e,email,password) => {
        
         e.preventDefault()
@@ -33,10 +40,15 @@ const Login = () => {
         }
         else if(isValidEmail && isValidPassword){
             setError('')
-            console.log('Log in successful :)')
+            dispatch(setUser({
+                email,
+                token: Date.now()
+            }))
+            localStorage.setItem('token', Date.now())
+
+            navigate('/')
         }
     }
-
 
     useEffect(() => {
         getUsers()
@@ -68,8 +80,8 @@ const Login = () => {
               </div>
             </div>
 
-
             <form>
+
                 <h1>
                    Login
                 </h1>
@@ -84,7 +96,7 @@ const Login = () => {
 
                 <br/>
                 <br />
-                <button onClick={(e) => validate(e,emailRef.current.value,passwordRef.current.value)} className='btn btn-success mb-2' type='button'> LOG IN </button>
+                <button onClick={(e) => validate(e,emailRef.current.value,passwordRef.current.value)} className='btn btn-success mb-2' type='submit'> LOG IN </button>
                 <button onClick={showModal} className='btn btn-outline-danger'> ¿How to login? </button>
             </form>
         </div>

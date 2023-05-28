@@ -15,7 +15,7 @@ const Login = () => {
     const [users, setUsers] = useState([])
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
+    
 
     const showModal = (e) => {
         e.preventDefault()
@@ -44,8 +44,7 @@ const Login = () => {
                 email,
                 token: Date.now()
             }))
-            localStorage.setItem('token', Date.now())
-
+            localStorage.setItem('email', email)
             navigate('/')
         }
     }

@@ -2,7 +2,7 @@ import '../Header/Header.scss'
 const Header = () => {
     return (
         <header >
-          <h1 style={{textAlign:'center'}}> Cart Store App</h1>
+          <h1 style={{textAlign:'center'}}> the online shopping </h1>
         </header>
     )
 }

@@ -1,20 +1,45 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { setUser } from '../../reducers/user/userSlice'
+import '../Dashboard/Dashboard.scss'
+import axios from 'axios'
+
+
 
 const Dashboard = () => {
-    const dispatch = useDispatch()
     const email = localStorage.getItem('email')
+    const [products,setProducts] = useState([])
+
 
     useEffect(() => {
+        axios.get('https://dummyjson.com/products')
+        .then(e => setProducts(e.data.products))
+        .catch(e => console.log(e))
     },[])
 
     return (
 
         <>
-            {email ? <div className="dashboard container h-100 w-100">
+            {email ? <div className="dashboard container w-100">
 
+            
+                <h1> Products </h1>
+                <div className='d-flex cards'>
+                {products.map(x => {
+                    return (
+                        
+                        <div className='card'>
+                            <div className='img-container'>
+                            <img className='card-img-top' src={x.thumbnail} />
+                            </div>
+                            <div className='card-body'>
+                                <h1 className='card-title'> {x.title} </h1>
+                                <p> {x.price}$ </p>
+                                <button className='btn btn-dark'> Add to cart </button>
+                            </div>
+                        </div>
+                    )
+                })}
+                </div>
             </div> : <Navigate replace to={'/login'} />}
         </>
     )

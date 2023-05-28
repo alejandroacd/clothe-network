@@ -39,7 +39,7 @@ const Login = () => {
             setError('Some of the data provided is incorrectly')
         }
         else if(isValidEmail && isValidPassword){
-            setError('')
+            setError('') 
             dispatch(setUser({
                 email,
                 token: Date.now()

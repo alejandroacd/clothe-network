@@ -1,6 +1,12 @@
 .dashboard {
-    h1 {
+    
+    .dashboard_title {
         font-weight: bold;
+        margin:1em;
+  
+        letter-spacing: 3px;
+        
+    ;
     }
     height: 100vh;
     display: flex;
@@ -9,6 +15,23 @@
     .cards {
         display: flex;
         flex-direction: column;
+
+        .card {
+            transition: 0.2s all;
+        
+            h1 {
+                font-weight: bold;
+                background: #000000;
+                /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, #434343, #000000);
+                /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #434343, #000000);
+                /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
         @media (min-width:1024px){
             display: flex;
             flex-direction: row;
@@ -17,26 +40,25 @@
             flex-wrap: wrap;
     
             .card {
-                transition: 0.2s all;
-                width: 25%;
+         
+                width: 30%;
                 margin: 1em;
                 height: 400px;
+
+                h1 {
+                    font-size: 2em;
+                }
                 p {
                     font-size: 1.2em;
                     font-weight: bold;
                 }    
-                h1 {
-                    font-size: 1.5em;
-                    font-weight: bold;
-                }
-    
+       
                 .img-container {
-           
                     height: 50%;
                 }
                 
                 button {
-                    margin: 1em 25%;
+                    margin: 0.5em 25%;
                     text-transform: uppercase;
                 }
           

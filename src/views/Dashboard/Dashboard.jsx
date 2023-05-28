@@ -14,7 +14,7 @@ const Dashboard = () => {
         axios.get('https://dummyjson.com/products')
         .then(e => setProducts(e.data.products))
         .catch(e => console.log(e))
-    },[])
+    },[email])
 
     return (
 
@@ -22,7 +22,7 @@ const Dashboard = () => {
             {email ? <div className="dashboard container w-100">
 
             
-                <h1> Products </h1>
+                <h1 className='dashboard_title'> Products </h1>
                 <div className='d-flex cards'>
                 {products.map(x => {
                     return (

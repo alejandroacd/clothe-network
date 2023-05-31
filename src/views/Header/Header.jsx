@@ -4,12 +4,14 @@ import { BiLogOut } from 'react-icons/bi'
 import { unsetUser } from '../../reducers/user/userSlice'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useSelector  } from 'react-redux'
 
 const Header = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const isLoggedIn = localStorage.getItem('email')
+  const { totalCount } = useSelector(state => state.cart)
 
 
   const logout = () => {
@@ -24,8 +26,8 @@ const Header = () => {
       <h1 > online shopping </h1>
 
       <div className={isLoggedIn ? 'options_menu' : 'd-none'} >
-        <AiOutlineShoppingCart size={25} />
-         <BiLogOut onClick={logout}  size={25} />
+         {totalCount} <AiOutlineShoppingCart size={25} />
+        <BiLogOut onClick={logout}  size={25} />
       </div>
     </header>
   )
